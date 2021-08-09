@@ -1,4 +1,4 @@
-# Shore Assignment task
+# Ebay Alert system
 
 ## Table of contents
 * [General info](#general-info)
