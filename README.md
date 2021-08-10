@@ -48,7 +48,8 @@
     * This service will also publish these products info on queue which can be subscribed by `Team B`
       to perform action on these alerts and product insight.
     * Implementation for second project for `Team B` is a simple script implemented as a consumer which
-      listen to the queue and printing messages.
+      listen to the queue and printing messages. Python script is `team_b_consumer.py` which can be run as
+      a simple python script.
     * Assumptions:
        * This service perform insight on product price for last 2 days which can be configured from env file.
        * Redis port is exposed as of now for `Team B` to listen which is not a secure way.
@@ -56,16 +57,16 @@
 
 ## Technologies:
    ### Framework:
-   * Django: Because web development is faster in Django.
-   * Django rest framework: For crud api applications and integration with Swagger.
-   * Django swagger: For Api documentations.
+   * Django(3.2.6): Because web development is faster in Django.
+   * Django rest framework(3.12.4): For crud api applications and integration with Swagger.
+   * Django swagger(2.2.0): For Api documentations.
    * NextJs: Because it's fast and it avoid writing boilerplate code.
 
    ### Database:
-   * Postgres : For relational database.
+   * Postgres
    ### Message broker and task scheduler:
    * Redis: For queue and message broker.
-   * Celery: To schedule task in the background.
+   * Celery: For Background task worker and scheduler.
    ### Deployments:
    * Docker: For deployment and running the project
 
