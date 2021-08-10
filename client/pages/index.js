@@ -10,8 +10,16 @@ export default function Alerts(props) {
       <main>
           <nav>
             <ul>
-                <li><Link href={"/"}><a>Alert List</a></Link></li>
-                <li><Link href={"/create"}><a>Create Alert</a></Link></li>
+                <li>
+                    <Link href={"/"}>
+                        <a><u>Alert List</u></a>
+                    </Link>
+                </li>
+                <li>
+                    <Link href={"/create"}>
+                        <a>Create Alert</a>
+                    </Link>
+                </li>
             </ul>
           </nav>
           <h1>Alert Lists</h1>
@@ -26,7 +34,7 @@ export default function Alerts(props) {
               </thead>
               <tbody>
                {props.alerts.map(alert => (
-                   <tr>
+                   <tr key={alert.id}>
                        <td>{alert.search_phrase}</td>
                        <td>{alert.time_interval} minutes</td>
                        <td>{alert.email}</td>
@@ -41,11 +49,9 @@ export default function Alerts(props) {
   )
 }
 
-export async function getStaticProps(context) {
-    const url = "http://127.0.0.1:8000/alerts/"
-
-    const res = await fetch(url, {
-    });
+export async function getServerSideProps(context) {
+    const url = `${process.env.SERVER_API_HOST}/alerts/`
+    const res = await fetch(url);
     const alerts = await res.json();
 
     return {

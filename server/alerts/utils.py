@@ -12,8 +12,6 @@ from django.utils import timezone
 from alerts.models import Product, Price, ProductAlert
 from shore.settings import EBAY_APP_ID, EBAY_BASE_URL, EMAIL_HOST_USER
 
-from server.shore.settings import PRODUCT_PRICE_CHANGE_DAYS
-
 logger = logging.getLogger(__name__)
 
 
@@ -81,18 +79,12 @@ def save_ebay_product(alert_id: int) -> List[Product]:
         try:
             # get last price
             last_price = product.price_set.latest('timestamp')
-            print("last price: ", last_price)
         except ObjectDoesNotExist:
-            print("Does not exist.")
             _ = Price.objects.create(price=price, product=product)
         else:
-            print("exist")
             if last_price.price != Decimal(price).quantize(Decimal('.01')):
-                print(" exist , diff, creating")
                 # create price, if there is some change inn price
                 _ = Price.objects.create(price=price, product=product)
-            else:
-                print("no diff")
         products.append(product)
 
     # sort by price, as it'll be mostly 20 products , this should be fine
@@ -128,6 +120,7 @@ def send_alert_notification(subject: str, alert: ProductAlert,
 
 def get_product_price_change_report(alert: ProductAlert
                                     ) -> Dict[str, List[Product]]:
+    PRODUCT_PRICE_CHANGE_DAYS = 2
     now = timezone.now()
     from_date = now - timezone.timedelta(days=int(PRODUCT_PRICE_CHANGE_DAYS))
     report = {

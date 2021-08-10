@@ -25,7 +25,7 @@ export default function CreateAlerts() {
                 </li>
                 <li>
                     <Link href={"/create"}>
-                        <a>Create Alert</a>
+                        <a><u>Create Alert</u></a>
                     </Link>
                 </li>
             </ul>
@@ -72,17 +72,13 @@ export default function CreateAlerts() {
                       handleSubmit,
                       isSubmitting,
                   }) => (
-
-
-
                         <form onSubmit={handleSubmit}>
 
                             {non_field_error.map( err => (
-                                <div className={"error"}>
+                                <div className={"error"} key={err}>
                                       {err}
                                 </div>
                             ))}
-
                             <div>
                                 <label htmlFor={"search_phrase_input"}>Search Phrase</label>
                                 <input
