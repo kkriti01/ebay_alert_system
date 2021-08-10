@@ -99,7 +99,7 @@ export default function CreateAlerts() {
                                     </div>}
                             </div>
                             <div>
-                                <label htmlFor={"email_input"}>Search Phrase</label>
+                                <label htmlFor={"email_input"}>Email</label>
                                 <input
                                     id={"email_input"}
                                     type="email"

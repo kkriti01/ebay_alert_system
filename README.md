@@ -70,13 +70,13 @@
    * Docker: For deployment and running the project
 
 ## Setup
+* Rename .env.example to .env and replace the value in .env
 * build the applicationq
     ``docker-compose build``
 
 * Run the application
     ``docker-compose up``
 
-* Rename .env.example to .env and replace the value in .env
 # Endpoints:
 
 * Server application: `http://127.0.0.1:8000`
