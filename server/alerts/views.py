@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 
 from .models import ProductAlert, Product
-from .serializers import ProductAlertSerializer
+from .serializers import ProductAlertSerializer, ProductSerializer
 
 
 class UserProductAlertViewSet(viewsets.ModelViewSet):

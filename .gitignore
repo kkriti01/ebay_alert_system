@@ -7,5 +7,5 @@ Thumbs.db
 
 # environments
 venv
-.env
+server/shore/.env
 
