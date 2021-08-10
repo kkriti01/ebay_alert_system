@@ -76,6 +76,7 @@
 * Run the application
     ``docker-compose up``
 
+* Rename .env.example to .env and replace the value in .env
 # Endpoints:
 
 * Server application: `http://127.0.0.1:8000`

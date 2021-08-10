@@ -46,6 +46,7 @@ venv
 # sqlite db
 *.db
 media
+.idea
 
 staticfiles
 
